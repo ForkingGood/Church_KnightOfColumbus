@@ -4,9 +4,9 @@ class Church extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->helper('url');
-		$this->load->helper('html');
-		$this->load->view('church_home');
+		$this->load->model('member_model');
+		$data['query'] = $this->member_model->get_last_ten_entries();
+		$this->load->view('church_home',$data);
 	}
 }
 

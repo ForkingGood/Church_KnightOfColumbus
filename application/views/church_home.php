@@ -100,9 +100,14 @@
 		<div class="contentBG">
 			
 
-			<img class="contentBGImg" src="images/cloudBG.jpg" />
+			<!-- <img class="contentBGImg" src="images/cloudBG.jpg" /> -->
 			<article>
-
+				<?php foreach($query as $row)
+				{
+    				print $row->Name;
+    				print "<br>";
+				}
+				?>
 			</article>
 			<article>
 
