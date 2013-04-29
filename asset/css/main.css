@@ -1,0 +1,141 @@
+/* MAIN ELEMENTS */
+
+body {
+	margin: 0;
+	background-color: #24587A;
+}
+.headerBG {
+	background-color: #24587A;
+	border-bottom: 1px solid #183c53;
+}
+.navBG {
+	background-color: #03426A;
+	border-top: 1px solid #0570b4;
+	border-bottom: 1px solid #022338;
+}
+.contentBG {
+	position: relative;
+	background-color: #EFE9DD;
+	padding-top: 30px;
+	overflow: hidden;
+}
+	.contentBG .contentBGImg {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		width: 100%;
+	}
+.footerBG {
+	background-color: #24587A;
+}
+header, nav, section, footer {
+	width: 1000px;
+	margin: 0 auto;
+}
+header {
+
+}
+nav a {
+	position: relative;
+	display: block;
+	float: left;
+	color: #65A6D1;
+	text-decoration: none;
+	padding: 10px 20px;
+	border-left: 1px solid #0570b4;
+	border-right: 1px solid #022338;
+}
+	nav a.start:before {
+		position: absolute;
+		left: -4px;
+		top: 0px;
+		border-right: 1px solid #022338;
+		padding: 20px 1px;
+		content: " ";
+	}
+	nav a.end:after {
+		position: absolute;
+		right: -4px;
+		top: 0px;
+		border-left: 1px solid #0570b4;
+		padding: 20px 1px;
+		content: " ";
+	}
+	nav a:hover {
+		text-decoration: underline;
+	}
+	nav a:active {
+		border-color: transparent;
+	}
+	nav a.selected {
+		background-color: #023351;
+		border-color: transparent;
+	}
+article {
+	position: relative;
+	margin-bottom: 30px;
+	z-index: 10;
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
+	padding: 10px;
+}
+	article:after {
+	    content: "";
+	    background-color: white;
+		box-shadow: 10px 10px 20px #888888;
+	    opacity: 0.7;
+	    top: 0;
+	    left: 0;
+	    bottom: 0;
+	    right: 0;
+	    width: 100%;
+	    position: absolute;
+	    z-index: -1;
+	}
+	article.noBG:after {
+		background-color: transparent;
+		box-shadow: none;
+	}
+footer {
+	height: 200px;
+}
+
+
+
+
+
+
+
+
+/* MISC */
+
+.left {
+	float: left !important;
+}
+.right {
+	float: right !important;
+}
+.clearboth {
+	clear: both;
+}
+.oneColumns {
+	width: 32%;
+	margin-right: 2%;
+	float: left;
+}
+.twoColumns {
+	width: 66%;
+	margin-right: 2%;
+	float: left;
+}
+.halfColumns {
+	width: 49%;
+	margin-right: 2%;
+	float: left;
+}
+.endColumns {
+	margin-right: 0;
+}
