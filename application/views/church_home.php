@@ -100,11 +100,12 @@
 		<div class="contentBG">
 			
 
-			<!-- <img class="contentBGImg" src="images/cloudBG.jpg" /> -->
+			<img class="contentBGImg" src="images/cloudBG.jpg" />
 			<article>
 				<?php foreach($query as $row)
 				{
     				print $row->Name;
+    				print $my_member->id;
     				print "<br>";
 				}
 				?>
@@ -126,7 +127,7 @@
 		</div>
 		<div class="footerBG">
 			<footer>
-				fg
+				
 			</footer>
 		</div>
 	</body>

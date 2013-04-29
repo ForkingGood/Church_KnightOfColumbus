@@ -5,7 +5,15 @@ class Church extends CI_Controller {
 	public function index()
 	{
 		$this->load->model('member_model');
-		$data['query'] = $this->member_model->get_last_ten_entries();
+		$params = array('id' => '5', 'name' => 'Pam');
+
+		$this->load->library('member',$params);
+		$object = new Member($params);
+		$data['my_member'] = $object;
+		
+		// $this->member_model->insert_member($object);
+
+		$data['query'] = $this->member_model->get_all();
 		$this->load->view('church_home',$data);
 	}
 }
