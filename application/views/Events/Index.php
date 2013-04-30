@@ -30,4 +30,8 @@
 	print "<div class=\"clearboth\"></div>";
 	print "</article>";
 }
+
+if ($loggedIn) {
+	print "<article class=\"event\">LOGGED IN</article>";
+}
 ?>

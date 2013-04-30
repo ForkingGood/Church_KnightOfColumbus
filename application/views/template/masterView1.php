@@ -2,11 +2,21 @@
 	<head>
 		<link rel="stylesheet" href="/Church_KnightOfColumbus/asset/css/main.css" />
 		<script type="text/javascript" src="/Church_KnightOfColumbus/asset/js/jquery-1.9.1.min.js"></script>
+		<style>
+			.loginView {
+				float: right;
+				margin-top: -22px;
+				color: white;
+			}
+		</style>
 	</head>
 	<body>
 		<div class="headerBG">
 			<header>
 				<h1 style="padding-top: 30px; color: white; font-size: 30pt;">WEBSITE TITLE</h1>
+				<div class="loginView">
+					<?php if ($this->session->userdata('logged_in')) { echo "Welcome ".$this->session->userdata('logged_in')['username']."! (LogOut)"; } ?>
+				</div>
 			</header>
 		</div>
 		<div class="navBG">
