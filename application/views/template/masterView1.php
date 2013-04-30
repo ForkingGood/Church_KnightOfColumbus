@@ -5,8 +5,16 @@
 		<style>
 			.loginView {
 				float: right;
-				margin-top: -22px;
+				margin-top: -30px;
 				color: white;
+				background-color: #03426A;
+				padding: 5px 10px;
+				border-radius: 6px 6px 0 0;
+				border: 1px solid #0570b4;
+				border-bottom-color: transparent;
+			}
+			.loginView a {
+				color: #65A6D1;
 			}
 		</style>
 	</head>
@@ -14,9 +22,15 @@
 		<div class="headerBG">
 			<header>
 				<h1 style="padding-top: 30px; color: white; font-size: 30pt;">WEBSITE TITLE</h1>
-				<div class="loginView">
-					<?php if ($this->session->userdata('logged_in')) { echo "Welcome ".$this->session->userdata('logged_in')['username']."! (LogOut)"; } ?>
-				</div>
+				<?php 
+					if ($this->session->userdata('logged_in')) { 
+				?>
+						<div class='loginView'>
+							Welcome <?php echo $this->session->userdata('logged_in')['username']; ?> ! ( <a href='/Church_KnightOfColumbus/index.php/Accounts/Logout/'>LogOut</a> )
+						</div>
+				<?php
+					} 
+				?>
 			</header>
 		</div>
 		<div class="navBG">
@@ -50,6 +64,9 @@
 		<div class="clearboth"></div>
 		<div class="footerBG">
 			<footer>
+					<?php if (!$this->session->userdata('logged_in')) {  ?>
+						<a href='/Church_KnightOfColumbus/index.php/Accounts/Login'>Login</a>
+					<?php } ?>
 				
 			</footer>
 		</div>

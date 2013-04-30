@@ -7,7 +7,14 @@ class Accounts extends CI_Controller {
  	{
    		parent::__construct();
  	}
-
+	
+	function Logout() 
+	{
+		$this->session->unset_userdata('logged_in');
+		session_destroy();
+		redirect('home', 'refresh');
+	}
+	
 	function Login()
 	{
 	 	if ($this->input->post()) {
@@ -41,6 +48,7 @@ class Accounts extends CI_Controller {
 		    $this->load->view('template/masterView1', array('content' => $content));
 		}
 	}
+
 	function check_database($password)
  	{
    		//Field validation succeeded.&nbsp; Validate against database
