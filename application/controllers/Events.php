@@ -14,5 +14,18 @@ class Events extends CI_Controller {
         // Pass to the master view
         $this->load->view('template/masterView1', array('content' => $content));
 	}
+	public function Remove($id) 
+	{
+		
+	}
+	public function add()
+	{
+		if ($this->input->post()) {
+
+
+		} else {
+
+		}
+	}
 }
 

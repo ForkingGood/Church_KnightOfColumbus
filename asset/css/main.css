@@ -118,6 +118,9 @@ article {
 		color: white;
 		text-decoration: none;
 	}
+	article a.delete:hover {
+		background-color: #bf3030;
+	}
 	article a.edit {
 		position: absolute;
 		right: -44px;

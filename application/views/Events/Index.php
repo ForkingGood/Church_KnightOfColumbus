@@ -36,7 +36,7 @@
 	print "<p>".$row->description."</p>";
 	print "<div class=\"clearboth\"></div>";
 	if ($loggedIn) {
-		print "<a href='#' class='delete'>X</a>";
+		print "<a href='/Church_KnightOfColumbus/index.php/Events/Remove/".$row->id."' class='delete'>X</a>";
 		print "<a href='#' class='edit'>Edit</a>";
 	}
 	print "</article>";
