@@ -1,14 +1,24 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Member {
+class Event {
 
 	public $id;
-	public $name;
+	public $date;
+    public $title;
+    public $description;
+    public $address;
+    public $imgPath;
+    public $time;
 
     function __construct($params)
     {
         $this->id = @$params['id'];
-        $this->name = @$params['name'];
+        $this->date = @$params['date'];
+        $this->title = @$params['title'];
+        $this->description = @$params['description'];
+        $this->address = @$params['address'];
+        $this->imgPath = @$params['imgPath'];
+        $this->time = @$params['time'];
     }
 
     public function __get($property) {

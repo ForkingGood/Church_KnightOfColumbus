@@ -7,7 +7,7 @@ class Church extends CI_Controller {
 		$this->load->model('member_model');
 		$params = array('id' => '5', 'name' => 'Pam');
 
-		$this->load->library('member',$params);
+		$this->load->library('member', $params);
 		$object = new Member($params);
 		$data['my_member'] = $object;
 		

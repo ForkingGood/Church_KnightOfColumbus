@@ -1,5 +1,5 @@
 <?php
-class Member_model extends CI_Model{
+class Officer_model extends CI_Model{
 
 	function __construct()
 	{
@@ -9,14 +9,15 @@ class Member_model extends CI_Model{
 	function get_all()
 	{
 		$this->load->database();
-		$query = $this->db->get('members');
+		$this->db->order_by('priority asc, name asc');
+		$query = $this->db->get('officers');
 		return $query->result();
 	}
 
 	function insert($object)
 	{
 		$this->load->database();
-		$this->db->insert('members', $object); 
+		$this->db->insert('officers', $object); 
 
 	}
 }

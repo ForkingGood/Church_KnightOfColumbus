@@ -99,6 +99,10 @@ article {
 		background-color: transparent;
 		box-shadow: none;
 	}
+	article h1 {
+		font-size: 20pt;
+		color: #24587A;
+	}
 footer {
 	height: 200px;
 }

@@ -1,0 +1,3 @@
+<article>
+	Contact Index
+</article>
