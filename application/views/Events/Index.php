@@ -46,7 +46,7 @@ if ($loggedIn) {
 ?>
 
 	<article class="event">
-		<form method="POST">
+		<form method="POST" action="/Church_KnightOfColumbus/index.php/Events/Add">
 			<img />
 			<input type='text' class='title' name='title' placeholder='Title' />
 			<br />

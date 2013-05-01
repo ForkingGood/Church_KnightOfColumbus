@@ -2,7 +2,7 @@
 
 class Events extends CI_Controller {
 
-	public function index()
+	public function Index()
 	{
 		$this->load->model('event_model');
 		
@@ -18,13 +18,25 @@ class Events extends CI_Controller {
 	{
 		
 	}
-	public function add()
+	public function Add()
 	{
 		if ($this->input->post()) {
-
-
+			$params = array(
+				'id' => '5', 
+				'date' => $this->input->post('date'),
+				'title' => $this->input->post('title'),
+				'description' => $this->input->post('description'),
+				'address' => $this->input->post('address'),
+				'imgPath' => '',//$this->input->post('imgPath'),
+				'time' => $this->input->post('time')
+				);
+			$this->load->library('event', $params);
+			$object = new Events($params);
+		
+			$this->load->model('event_model');
+			$this->event_model->insert($object);
 		} else {
-
+			Index();
 		}
 	}
 }

@@ -20,5 +20,10 @@ class Event_model extends CI_Model{
 		$this->db->insert('events', $object); 
 
 	}
+
+	function delete()
+	{
+		
+	}
 }
 ?>
