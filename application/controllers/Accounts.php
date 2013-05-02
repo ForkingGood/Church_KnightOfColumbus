@@ -36,7 +36,7 @@ class Accounts extends CI_Controller {
 		   	else
 		   	{
 		     	//Go to private area
-		     	$this->load->view('');
+		     	redirect('church_home');
 		     	//redirect('home', 'refresh');
 		   	}
 	 	} else {

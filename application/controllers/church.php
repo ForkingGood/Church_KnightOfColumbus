@@ -4,14 +4,14 @@ class Church extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->model('member_model');
-		$params = array('id' => '5', 'name' => 'Pam');
+		$params = array('name' => 'Pam');
 
 		$this->load->library('member', $params);
 		$object = new Member($params);
 		$data['my_member'] = $object;
 		
-		// $this->member_model->insert_member($object);
+		$this->load->model('member_model');
+		$this->member_model->insert($object);
 
 		$data['query'] = $this->member_model->get_all();
 
