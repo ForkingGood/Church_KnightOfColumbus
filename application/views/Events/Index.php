@@ -100,7 +100,7 @@
 	print "<p style='display: none;' class='id'>".$row->id."</p>";
 	print "<img src=\"".$row->imgPath."\" />";
 	print "<h1 class='title'>".$row->title."</h1>";
-	print "<i class='date'>".$row->date."</i>&nbsp;&nbsp;|&nbsp;&nbsp;<i class='time'>".$row->time."</i>&nbsp;&nbsp;|&nbsp;&nbsp;<i class='address'>".$row->address."</i>
+	print "<i class='date'>".date('M d, Y', strtotime($row->date))."</i>&nbsp;&nbsp;|&nbsp;&nbsp;<i class='time'>".$row->time."</i>&nbsp;&nbsp;|&nbsp;&nbsp;<i class='address'>".$row->address."</i>
 	";
 	print "<p class='description'>".$row->description."</p>";
 	print "<div class=\"clearboth\"></div>";

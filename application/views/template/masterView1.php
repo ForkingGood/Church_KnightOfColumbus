@@ -31,7 +31,7 @@
 					if ($this->session->userdata('logged_in')) { 
 				?>
 						<div class='loginView'>
-							Welcome <?php echo $this->session->userdata('logged_in')['username']; ?> ! ( <a href='/Church_KnightOfColumbus/index.php/Accounts/Logout/'>LogOut</a> )
+							Welcome <?php echo $this->session->userdata('logged_in')['username'].' ! ( '.anchor('Accounts/Logout', 'LogOut').' )'; ?>
 						</div>
 				<?php
 					} 
@@ -40,12 +40,14 @@
 		</div>
 		<div class="navBG">
 			<nav>
-				<a href="/Church_KnightOfColumbus/" class="start selected">Home</a>
-				<a href="/Church_KnightOfColumbus/index.php/Officers/">Officers</a>
-				<a href="/Church_KnightOfColumbus/index.php/Membership/">Membership</a>
-				<a href="/Church_KnightOfColumbus/index.php/Events/">Events</a>
-				<a href="/Church_KnightOfColumbus/index.php/Proclaimers/">Proclaimers</a>
-				<a href="/Church_KnightOfColumbus/index.php/Contact/" class="end">Contact</a>
+				<?php 
+					echo anchor('', 'Home', array('class' => 'start')); 
+					echo anchor('Officers', 'Officers');
+					echo anchor('Membership', 'Membership');
+					echo anchor('Events', 'Events');
+					echo anchor('Proclaimers', 'Proclaimers');
+					echo anchor('Contact', 'Contact', array('class' => 'end'));
+				?>
 				<div class="clearboth"></div>
 			</nav>
 		</div>
@@ -57,12 +59,14 @@
 		</div>
 		<div class="navBG">
 			<nav>
-				<a href="#" class="start selected">Home</a>
-				<a href="#">Officers</a>
-				<a href="#">Membership</a>
-				<a href="#">Events</a>
-				<a href="#">Proclaimers</a>
-				<a href="#" class="end">Contact</a>
+				<?php 
+					echo anchor('', 'Home', array('class' => 'start')); 
+					echo anchor('Officers', 'Officers');
+					echo anchor('Membership', 'Membership');
+					echo anchor('Events', 'Events');
+					echo anchor('Proclaimers', 'Proclaimers');
+					echo anchor('Contact', 'Contact', array('class' => 'end'));
+				?>
 				<div class="clearboth"></div>
 			</nav>
 		</div>
