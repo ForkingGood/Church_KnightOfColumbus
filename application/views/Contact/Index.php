@@ -6,14 +6,16 @@
 		<p>(905) 273-6630</p>
 	</article>
 	<article>
-		<h1>Contact</h1>
-		<h2>Email</h2>
-		<input type="text" />
-		<h2>Topic</h2>
-		<input type="text" />
-		<h2>Message</h2>
-		<textarea style="height: 100px; width: 100%;"></textarea>
-		<input type="submit" value="Send" />
+		<form method="POST" action="/Church_KnightOfColumbus/index.php/Contact/SendMail">
+			<h1>Contact</h1>
+			<h2>Email</h2>
+			<input type="text" />
+			<h2>Topic</h2>
+			<input type="text" />
+			<h2>Message</h2>
+			<textarea style="height: 100px; width: 100%;"></textarea>
+			<input type="submit" value="Send" />
+		</form>
 	</article>
 </article>
 <article class="oneColumns endColumns">

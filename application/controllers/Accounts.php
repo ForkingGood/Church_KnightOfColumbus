@@ -12,7 +12,7 @@ class Accounts extends CI_Controller {
 	{
 		$this->session->unset_userdata('logged_in');
 		session_destroy();
-		redirect('home', 'refresh');
+		redirect('', 'refresh');
 	}
 	
 	function Login()
@@ -36,7 +36,7 @@ class Accounts extends CI_Controller {
 		   	else
 		   	{
 		     	//Go to private area
-		     	redirect('church_home');
+		     	redirect('');
 		     	//redirect('home', 'refresh');
 		   	}
 	 	} else {

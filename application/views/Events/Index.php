@@ -30,6 +30,8 @@
 				border: 2px solid #03426A;
 				background-color: #cacaca;
 				width: 900px;
+				box-shadow: 0px 0px 60px #888888;
+				border-radius: 8px;
 			}
 			.PopBox h1 {
 				color: white;

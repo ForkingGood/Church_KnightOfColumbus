@@ -21,6 +21,7 @@ class Events extends CI_Controller {
 		$this->event_model->delete($id);
 
 		// redirect to events page
+		redirect('Events', 'refresh');
 	}
 	public function Add()
 	{
@@ -33,12 +34,12 @@ class Events extends CI_Controller {
 				'imgPath' => '',//$this->input->post('imgPath'),
 				'time' => $this->input->post('time')
 				);
-			// $this->load->library('event', $params);
-			// $object = new Events($params);
 		
 			$this->load->model('event_model');
 
 			$this->event_model->insert($params);
+
+			redirect('Events', 'refresh');
 		} else {
 			Index();
 		}
@@ -57,6 +58,7 @@ class Events extends CI_Controller {
 		
 			$this->load->model('event_model');
 			$this->event_model->edit($this->input->post('id'), $params);
+			redirect('Events', 'refresh');
 		} else {
 			Index();
 		}
