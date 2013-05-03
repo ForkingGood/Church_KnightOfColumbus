@@ -52,9 +52,9 @@
 				background-color: red;
 			}
 		</style>
-<link rel="stylesheet" href="/Church_KnightOfColumbus/asset/css/jquery-ui.css" />
-<link rel="stylesheet" href="/Church_KnightOfColumbus/asset/css/jquery-ui-timepicker-addon.css" />
-<script type="text/javascript" src="/Church_KnightOfColumbus/asset/js/jquery-ui-timepicker-addon.js"></script>
+<link rel="stylesheet" href="<?php echo base_url() ?>asset/css/jquery-ui.css" />
+<link rel="stylesheet" href="<?php echo base_url() ?>asset/css/jquery-ui-timepicker-addon.css" />
+<script type="text/javascript" src="<?php echo base_url() ?>asset/js/jquery-ui-timepicker-addon.js"></script>
 <script>
 	$(function() {
 		$('.PopIt[name="edit"]').click(function() {

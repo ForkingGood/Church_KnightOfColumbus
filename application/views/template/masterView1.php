@@ -1,12 +1,12 @@
 <!Doctype HTML>
 <html>
 	<head>
-		<link rel="stylesheet" href="/Church_KnightOfColumbus/asset/css/main.css" />
-		<script type="text/javascript" src="/Church_KnightOfColumbus/asset/js/jquery-1.9.1.min.js"></script>
-		<script type="text/javascript" src="/Church_KnightOfColumbus/asset/js/jquery-ui.min.js"></script>
+		<link rel="stylesheet" href="<?php echo base_url() ?>asset/css/main.css" />
+		<script type="text/javascript" src="<?php echo base_url() ?>asset/js/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="<?php echo base_url() ?>asset/js/jquery-ui.min.js"></script>
 
-		<link rel="stylesheet" href="/Church_KnightOfColumbus/asset/css/PopBox.css" />
-		<script type="text/javascript" src="/Church_KnightOfColumbus/asset/js/PopBox.js"></script>
+		<link rel="stylesheet" href="<?php echo base_url() ?>asset/css/PopBox.css" />
+		<script type="text/javascript" src="<?php echo base_url() ?>asset/js/PopBox.js"></script>
 
 		<style>
 			.loginView {
@@ -53,7 +53,7 @@
 			</nav>
 		</div>
 		<div class="contentBG">
-			<img class="contentBGImg" src="/Church_KnightOfColumbus/asset/images/cloudBG.jpg" />
+			<img class="contentBGImg" src="<?php echo base_url() ?>asset/images/cloudBG.jpg" />
 			<section>
 				<?php echo $content; ?>
 			</section>
@@ -74,9 +74,7 @@
 		<div class="clearboth"></div>
 		<div class="footerBG">
 			<footer>
-					<?php if (!$this->session->userdata('logged_in')) {  ?>
-						<a href='/Church_KnightOfColumbus/index.php/Accounts/Login'>Login</a>
-					<?php } ?>
+					<?php if (!$this->session->userdata('logged_in')) {  echo anchor('Accounts/Login', 'Login'); } ?>
 				
 			</footer>
 		</div>
