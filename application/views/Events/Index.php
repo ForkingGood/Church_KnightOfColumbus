@@ -29,28 +29,32 @@
 			.PopBox {
 				border: 2px solid #03426A;
 				background-color: #cacaca;
-				width: 900px;
+				width: 950px;
 				box-shadow: 0px 0px 60px #888888;
-				border-radius: 8px;
 			}
 			.PopBox h1 {
 				color: white;
 				background-color: #03426A;
 				margin: 0;
 				padding: 4px 10px;
+				cursor: move;
 			}
 			.PopBox .close {
 				position: absolute;
-				right: 3;
-				top: 3;
-				background-color: red;
+				right: 3px;
+				top: -2px;
+				background-color: #a60000;
 				color: white;
 				text-decoration: none;
-				padding: 4px 8px;
-				border-radius: 7px;
+				padding: 2px 20px;
+			}
+			.PopBox .close:hover {
+				background-color: red;
 			}
 		</style>
-
+<link rel="stylesheet" href="/Church_KnightOfColumbus/asset/css/jquery-ui.css" />
+<link rel="stylesheet" href="/Church_KnightOfColumbus/asset/css/jquery-ui-timepicker-addon.css" />
+<script type="text/javascript" src="/Church_KnightOfColumbus/asset/js/jquery-ui-timepicker-addon.js"></script>
 <script>
 	$(function() {
 		$('.PopIt[name="edit"]').click(function() {
@@ -68,7 +72,6 @@
 
 
 
-
 <div class="PopBox edit">
 	<h1>Edit</h1>
 	<div class="event">
@@ -77,16 +80,16 @@
 			<img />
 			<input type='text' class='title' name='title' placeholder='Title' />
 			<br />
-			<input type='text' class='italic' name='date' placeholder='Date' />
+			<input id='editDate' type='text' class='italic' name='date' placeholder='Date' />
 			&nbsp;&nbsp;|&nbsp;&nbsp;
-			<input type='text' class='italic' name='time' placeholder='Time' />
+			<input id='editTime' type='text' class='italic' name='time' placeholder='Time' />
 			&nbsp;&nbsp;|&nbsp;&nbsp;
 			<input type='text' class='italic' name='address' placeholder='Address' />
 			<br />
 			<br />
 			<textarea style="width: 75%; height: 110px;" name='description' placeholder='Description'></textarea>
 			<br /><br />
-			<input type='submit' value='Add' style="width: 100%;" />
+			<input type='submit' value='Set' style="width: 100%;" />
 		</form>
 		<div class='clearboth'></div>
 	</div>
@@ -100,9 +103,10 @@
 	print "<p style='display: none;' class='id'>".$row->id."</p>";
 	print "<img src=\"".$row->imgPath."\" />";
 	print "<h1 class='title'>".$row->title."</h1>";
-	print "<i class='date'>".date('M d, Y', strtotime($row->date))."</i>&nbsp;&nbsp;|&nbsp;&nbsp;<i class='time'>".$row->time."</i>&nbsp;&nbsp;|&nbsp;&nbsp;<i class='address'>".$row->address."</i>
+	print "<i class='date'>".date('M d, Y', strtotime($row->date))."</i>&nbsp;&nbsp;|&nbsp;&nbsp;<i class='time'>".date('h:i a', strtotime($row->time))."</i>&nbsp;&nbsp;|&nbsp;&nbsp;<i class='address'>".$row->address."</i>
 	";
 	print "<p class='description'>".$row->description."</p>";
+
 	print "<div class=\"clearboth\"></div>";
 	if ($loggedIn) {
 		print "<a href='/Church_KnightOfColumbus/index.php/Events/Remove/".$row->id."' class='delete'>X</a>";
@@ -119,9 +123,9 @@ if ($loggedIn) {
 			<img />
 			<input type='text' class='title' name='title' placeholder='Title' />
 			<br />
-			<input type='text' class='italic' name='date' placeholder='Date' />
+			<input id='addDate' type='text' class='italic' name='date' placeholder='Date' />
 			&nbsp;&nbsp;|&nbsp;&nbsp;
-			<input type='text' class='italic' name='time' placeholder='Time' />
+			<input id='addTime' type='text' class='italic' name='time' placeholder='Time' />
 			&nbsp;&nbsp;|&nbsp;&nbsp;
 			<input type='text' class='italic' name='address' placeholder='Address' />
 			<br />
@@ -132,6 +136,19 @@ if ($loggedIn) {
 		</form>
 		<div class='clearboth'></div>
 	</article>
+	<script>
+		$('#addDate').datetimepicker({
+			altField: "#addTime",
+			controlType: 'select',
+			timeFormat: 'hh:mm tt'
+		});
+		$('#editDate').datetimepicker({
+			altField: "#editTime",
+			controlType: 'select',
+			timeFormat: 'hh:mm tt'
+		});
+		$( ".PopBox" ).draggable({containment: "body"});
+	</script>
 <?php
 }
 ?>

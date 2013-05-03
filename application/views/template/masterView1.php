@@ -1,8 +1,9 @@
+<!Doctype HTML>
 <html>
 	<head>
 		<link rel="stylesheet" href="/Church_KnightOfColumbus/asset/css/main.css" />
 		<script type="text/javascript" src="/Church_KnightOfColumbus/asset/js/jquery-1.9.1.min.js"></script>
-
+		<script type="text/javascript" src="/Church_KnightOfColumbus/asset/js/jquery-ui.min.js"></script>
 
 		<link rel="stylesheet" href="/Church_KnightOfColumbus/asset/css/PopBox.css" />
 		<script type="text/javascript" src="/Church_KnightOfColumbus/asset/js/PopBox.js"></script>

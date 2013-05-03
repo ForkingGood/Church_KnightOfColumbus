@@ -22,6 +22,6 @@ $(function() {
 });
 
 $(window).resize(function() {
-	$('.PopBox').css('top', ($(window).height() - $('.PopBox').outerHeight()) / 2 - ($('.PopBox').outerHeight() / 2));
-	$('.PopBox').css('left', ($(window).width() - $('.PopBox').outerWidth()) / 2);
+	$('.PopBox').css('top', ($(window).innerHeight() - $('.PopBox').outerHeight()) / 2);
+	$('.PopBox').css('left', ($(window).innerWidth() - $('.PopBox').outerWidth()) / 2);
 });

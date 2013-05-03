@@ -27,12 +27,12 @@ class Events extends CI_Controller {
 	{
 		if ($this->input->post()) {
 			$params = array( 
-				'date' => $this->input->post('date'),
+				'date' => date('Y-m-d', strtotime($this->input->post('date'))),
 				'title' => $this->input->post('title'),
 				'description' => $this->input->post('description'),
 				'address' => $this->input->post('address'),
 				'imgPath' => '',//$this->input->post('imgPath'),
-				'time' => $this->input->post('time')
+				'time' => date('H:i:s', strtotime($this->input->post('time')))
 				);
 		
 			$this->load->model('event_model');
@@ -47,13 +47,13 @@ class Events extends CI_Controller {
 	public function Edit()
 	{
 		if ($this->input->post()) {
-			$params = array(
-				'date' => $this->input->post('date'),
+			$params = array( 
+				'date' => date('Y-m-d', strtotime($this->input->post('date'))),
 				'title' => $this->input->post('title'),
 				'description' => $this->input->post('description'),
 				'address' => $this->input->post('address'),
 				'imgPath' => '',//$this->input->post('imgPath'),
-				'time' => $this->input->post('time')
+				'time' => date('H:i:s', strtotime($this->input->post('time')))
 				);
 		
 			$this->load->model('event_model');
