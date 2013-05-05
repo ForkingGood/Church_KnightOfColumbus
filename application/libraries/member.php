@@ -3,12 +3,24 @@
 class Member {
 
 	public $id;
-	public $name;
+	public $first_name;
+    public $last_name;
+    public $date_joined;
+    public $rank;
+    public $description;
+    public $date_of_birth;
+    public $priority;
 
     function __construct($params)
     {
         $this->id = @$params['id'];
-        $this->name = @$params['name'];
+        $this->first_name = @$params['first_name'];
+        $this->last_name = @$params['last_name'];
+        $this->date_joined = @$params['date_joined'];
+        $this->rank = @$params['rank'];
+        $this->description = @$params['description'];
+        $this->date_of_birth = @$params['date_of_birth'];
+        $this->priority = @$params['priority'];
     }
 
     public function __get($property) {
