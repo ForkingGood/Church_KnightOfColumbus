@@ -27,12 +27,13 @@ class Events extends CI_Controller {
 	{
 		if ($this->input->post()) {
 			$params = array( 
-				'date' => date('Y-m-d', strtotime($this->input->post('date'))),
-				'title' => $this->input->post('title'),
-				'description' => $this->input->post('description'),
+				'name' => $this->input->post('name'),
 				'address' => $this->input->post('address'),
-				'imgPath' => '',//$this->input->post('imgPath'),
-				'time' => date('H:i:s', strtotime($this->input->post('time')))
+				'datetime_created' => date('Y-m-d H:i:s'),
+				'start_datetime' => date('Y-m-d', strtotime($this->input->post('startDate'))).' '.date('H:i:s', strtotime($this->input->post('startTime'))),
+				'end_datetime' => date('Y-m-d', strtotime($this->input->post('endDate'))).' '.date('H:i:s', strtotime($this->input->post('endTime'))),
+				'description' => $this->input->post('description'),
+				'image_path' => ''//$this->input->post('imgPath')
 				);
 		
 			$this->load->model('event_model');
@@ -48,12 +49,13 @@ class Events extends CI_Controller {
 	{
 		if ($this->input->post()) {
 			$params = array( 
-				'date' => date('Y-m-d', strtotime($this->input->post('date'))),
-				'title' => $this->input->post('title'),
-				'description' => $this->input->post('description'),
+				'name' => $this->input->post('name'),
 				'address' => $this->input->post('address'),
-				'imgPath' => '',//$this->input->post('imgPath'),
-				'time' => date('H:i:s', strtotime($this->input->post('time')))
+				'datetime_created' => date('Y-m-d H:i:s'),
+				'start_datetime' => date('Y-m-d', strtotime($this->input->post('startDate'))).' '.date('H:i:s', strtotime($this->input->post('startTime'))),
+				'end_datetime' => date('Y-m-d', strtotime($this->input->post('endDate'))).' '.date('H:i:s', strtotime($this->input->post('endTime'))),
+				'description' => $this->input->post('description'),
+				'image_path' => ''//$this->input->post('imgPath')
 				);
 		
 			$this->load->model('event_model');

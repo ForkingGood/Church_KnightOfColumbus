@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 03, 2013 at 02:35 AM
+-- Generation Time: May 05, 2013 at 03:42 AM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -29,21 +29,23 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `event` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` text NOT NULL,
+  `address` text NOT NULL,
   `datetime_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `start_datetime` datetime NOT NULL,
   `end_datetime` datetime NOT NULL,
   `description` text NOT NULL,
   `image_path` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `event`
 --
 
-INSERT INTO `event` (`id`, `name`, `datetime_created`, `start_datetime`, `end_datetime`, `description`, `image_path`) VALUES
-(1, 'Cancer Marathon', '2013-05-02 23:58:53', '2013-05-22 08:34:20', '2013-05-02 06:14:31', 'A cancer marathon to raise funds for the fight against cancer', NULL),
-(2, 'Abortion Protest', '2013-05-02 23:58:53', '2013-05-23 07:34:41', '2013-05-31 10:30:39', 'A rally to protest against child abortion in hospitals', NULL);
+INSERT INTO `event` (`id`, `name`, `address`, `datetime_created`, `start_datetime`, `end_datetime`, `description`, `image_path`) VALUES
+(1, 'Cancer Marathon', '123 Hootion Street', '2013-05-05 07:04:29', '2013-05-22 08:30:00', '2013-05-30 08:30:00', 'A cancer marathon to raise funds for the fight against cancer', ''),
+(2, 'Abortion Protest', '233 Canon Road', '2013-05-02 23:58:53', '2013-05-23 07:34:41', '2013-05-31 10:30:39', 'A rally to protest against child abortion in hospitals', NULL),
+(9, 'Car Wash', '123 haha Street', '2013-05-05 07:08:36', '2013-05-14 14:00:00', '2013-05-14 18:00:00', 'This event is to wash car to raise money for the sick kids.', '');
 
 -- --------------------------------------------------------
 
