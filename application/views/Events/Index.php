@@ -62,7 +62,10 @@
 				padding: 4px 10px;
 				cursor: move;
 			}
-			.PopBox .close {
+			.PopBox p {
+				padding: 10px;
+			}
+			.PopBox .x {
 				position: absolute;
 				right: 3px;
 				top: -2px;
@@ -71,44 +74,27 @@
 				text-decoration: none;
 				padding: 2px 20px;
 			}
-			.PopBox .close:hover {
+			.PopBox .x:hover {
 				background-color: red;
+			}
+			.PopBox .button {
+				padding: 10px 0;
+				margin: 4px;
 			}
 		</style>
 <link rel="stylesheet" href="<?php echo base_url() ?>asset/css/jquery-ui.css" />
 <link rel="stylesheet" href="<?php echo base_url() ?>asset/css/jquery-ui-timepicker-addon.css" />
 <script type="text/javascript" src="<?php echo base_url() ?>asset/js/jquery-ui-timepicker-addon.js"></script>
-<script>
-	$(function() {
-		$('.PopIt[name="edit"]').click(function() {
-			var set = $(this).parent();
-			$('.PopBox.edit input[name="id"]').val(set.children('.id').text());
-			$('.PopBox.edit input[name="name"]').val(set.children('.name').text());
-			$('.PopBox.edit input[name="startDate"]').val(set.children('.startDate').text());
-			$('.PopBox.edit input[name="endDate"]').val(set.children('.endDate').text() == '' ? set.children('.startDate').text() : set.children('.endDate').text());
-			$('.PopBox.edit input[name="startTime"]').val(set.children('.startTime').text());
-			$('.PopBox.edit input[name="endTime"]').val(set.children('.endTime').text() == '' ? set.children('.startTime').text() : set.children('.endTime').text());
-			$('.PopBox.edit input[name="address"]').val(set.children('.address').text());
-			$('.PopBox.edit textarea[name="description"]').val(set.children('.description').text());
-			$('.PopBox.edit img').attr('src', set.children('img').attr('src'));
-		});
-	});
-	function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-                $(input).parent().children('img')
-                    .attr('src', e.target.result);
-            };
-
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-</script>
 
 
 
+
+
+<!------------------------------------------------------------------------------------------------------------------------------------>
+
+<!------------------ EDIT FORM  ------------------------------------------------------------------------------------------------------>
+
+<!------------------------------------------------------------------------------------------------------------------------------------>
 
 <div class="PopBox edit">
 	<h1>Edit</h1>
@@ -133,9 +119,22 @@
 		</form>
 		<div class='clearboth'></div>
 	</div>
-	<a href="#" class="close">X</a>
+	<a href="#" class="close x">X</a>
 </div>
 
+<div class="PopBox delete">
+	<h1>Delete</h1>
+	<p class="aligncenter">Are you sure you want to delete event: '<b name="eventName">Event #1</b>' ?</p>
+	<a href="#" class="halfColumns aligncenter button confirm">Confirm</a>
+	<a href="#" class="halfColumns endColumns aligncenter button close">Cancel</a>
+	<a href="#" class="close x">X</a>
+</div>
+
+<!------------------------------------------------------------------------------------------------------------------------------------>
+
+<!------------------ DISPLAY FORM ---------------------------------------------------------------------------------------------------->
+
+<!------------------------------------------------------------------------------------------------------------------------------------>
 
 <?php foreach($query as $row)
 {
@@ -154,14 +153,22 @@
 
 	print "<div class=\"clearboth\"></div>";
 	if ($loggedIn) {
-		print "<a href='/Church_KnightOfColumbus/index.php/Events/Remove/".$row->id."' class='delete'>X</a>";
+		// print "<a href='/Church_KnightOfColumbus/index.php/Events/Remove/".$row->id."' class='delete'>X</a>";
+		print "<a href='#' class='PopIt delete' name='delete'>X</a>";
 		print "<a href='#' class='PopIt edit' name='edit'>Edit</a>";
 	}
 	print "</article>";
 }
 
+
 if ($loggedIn) {
 ?>
+
+<!------------------------------------------------------------------------------------------------------------------------------------>
+
+<!------------------ ADD FORM   ------------------------------------------------------------------------------------------------------>
+
+<!------------------------------------------------------------------------------------------------------------------------------------>
 
 	<article class="event addForm">
 		<?php echo $addError;?>
@@ -273,6 +280,39 @@ if ($loggedIn) {
 		});
 
 		$( ".PopBox" ).draggable({containment: "body"});
+
+
+
+		$(function() {
+			$('.PopIt[name="edit"]').click(function() {
+				var set = $(this).parent();
+				$('.PopBox.edit input[name="id"]').val(set.children('.id').text());
+				$('.PopBox.edit input[name="name"]').val(set.children('.name').text());
+				$('.PopBox.edit input[name="startDate"]').val(set.children('.startDate').text());
+				$('.PopBox.edit input[name="endDate"]').val(set.children('.endDate').text() == '' ? set.children('.startDate').text() : set.children('.endDate').text());
+				$('.PopBox.edit input[name="startTime"]').val(set.children('.startTime').text());
+				$('.PopBox.edit input[name="endTime"]').val(set.children('.endTime').text() == '' ? set.children('.startTime').text() : set.children('.endTime').text());
+				$('.PopBox.edit input[name="address"]').val(set.children('.address').text());
+				$('.PopBox.edit textarea[name="description"]').val(set.children('.description').text());
+				$('.PopBox.edit img').attr('src', set.children('img').attr('src'));
+			});
+			$('.PopIt[name="delete"]').click(function() {
+				$('.PopBox.delete a.confirm').attr('href', '/Church_KnightOfColumbus/index.php/Events/Remove/' + $(this).parent().children('p.id').html());
+				$('.PopBox.delete b[name="eventName"]').html($(this).parent().children('.name').text());
+			});
+		});
+		function readURL(input) {
+	        if (input.files && input.files[0]) {
+	            var reader = new FileReader();
+
+	            reader.onload = function (e) {
+	                $(input).parent().children('img')
+	                    .attr('src', e.target.result);
+	            };
+
+	            reader.readAsDataURL(input.files[0]);
+	        }
+	    }
 	</script>
 <?php
 }

@@ -1,4 +1,4 @@
-/* MAIN ELEMENTS */
+	/* MAIN ELEMENTS */
 
 body {
 	margin: 0;
@@ -144,10 +144,11 @@ footer {
 
 
 
-input[type='submit'], input[type='button'] {
+input[type='submit'], input[type='button'], a.button {
 	padding: 5px 15px;
 	background-color: #0570b4;
 	color: white;
+	text-decoration: none;
 	border-color: #0570b4;
 }
 
