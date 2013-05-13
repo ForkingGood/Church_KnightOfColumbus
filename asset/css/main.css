@@ -164,6 +164,15 @@ input[type='submit'], input[type='button'] {
 .clearboth {
 	clear: both;
 }
+.alignleft {
+	text-align: left;
+}
+.alignright {
+	text-align: right;
+}
+.aligncenter {
+	text-align: center;
+}
 .oneColumns {
 	width: 32%;
 	margin-right: 2%;

@@ -9,15 +9,15 @@ class Officer_model extends CI_Model{
 	function get_all()
 	{
 		$this->load->database();
-		$this->db->order_by('priority asc, name asc');
-		$query = $this->db->get('officers');
+		$this->db->order_by('priority asc, last_name asc');
+		$query = $this->db->get('member');
 		return $query->result();
 	}
 
 	function insert($object)
 	{
 		$this->load->database();
-		$this->db->insert('officers', $object); 
+		$this->db->insert('member', $object); 
 
 	}
 }

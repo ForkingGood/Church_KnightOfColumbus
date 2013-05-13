@@ -23,9 +23,9 @@
 <?php foreach($query as $row)
 {
 	print "<article class=\"member\">";
-	print "<img src=\"".$row->imgPath."\" />";
-	print "<h1>".$row->name."</h1>";
-	print "<i>".$row->role."</i>";
+	print "<img src=\"".$row->image_path."\" />";
+	print "<h1>".$row->first_name.' '.$row->last_name."</h1>";
+	print "<i>".$row->rank."</i>";
 	print "<p>".$row->description."</p>";
 	print "</article>";
 }

@@ -6,9 +6,26 @@ class Member_model extends CI_Model{
 		parent::__construct();
 	}
 
-	function get_all()
+	function get_all($min, $max)
 	{
 		$this->load->database();
+
+		$hasWhere = false;
+
+		$whereStr = '';
+		if (!is_null($min) && $min != -1) {
+			$whereStr .= $hasWhere ? ' AND ' : '';
+			$whereStr .= 'priority >= '.$min;
+			$hasWhere = true;
+		}
+		if (!is_null($max) && $max != -1) {
+			$whereStr .= $hasWhere ? ' AND ' : '';
+			$whereStr .= 'priority <= '.$max;
+			$hasWhere = true;
+		}
+
+		if ($hasWhere) { $this->db->where($whereStr); }
+
 		$this->db->order_by('priority asc');
 		$query = $this->db->get('member');
 		return $query->result();
