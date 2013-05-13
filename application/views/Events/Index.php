@@ -13,6 +13,7 @@
 				margin: -2px 0 2px 0;
 			}
 			.event img {
+				border: 1px solid #cccccc;
 				float: left;
 				margin-right: 20px;
 				width: 200px;
@@ -37,6 +38,16 @@
 			.editForm input.address {
 				width: 222px;
 			}
+			input[type='file'] {
+				position: absolute;
+				left: 10px;
+				top: 10px;
+				width: 200px;
+				height: 200px;
+				opacity: 0;
+			}
+
+
 
 			.PopBox {
 				border: 2px solid #03426A;
@@ -79,8 +90,21 @@
 			$('.PopBox.edit input[name="endTime"]').val(set.children('.endTime').text() == '' ? set.children('.startTime').text() : set.children('.endTime').text());
 			$('.PopBox.edit input[name="address"]').val(set.children('.address').text());
 			$('.PopBox.edit textarea[name="description"]').val(set.children('.description').text());
+			$('.PopBox.edit img').attr('src', set.children('img').attr('src'));
 		});
 	});
+	function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $(input).parent().children('img')
+                    .attr('src', e.target.result);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
 </script>
 
 
@@ -91,7 +115,7 @@
 	<div class="event editForm">
 		<form method="POST" action="/Church_KnightOfColumbus/index.php/Events/Edit">
 			<input type='text' style='display: none;' name='id' />
-			<img />
+			<img name='image' />
 			<input type='text' class='name' name='name' placeholder='Event Name' />
 			<br />
 			<input type='text' class='italic date' name='startDate' placeholder='Start Date' /> -
@@ -122,7 +146,7 @@
 
 	print "<article class=\"event\">";
 	print "<p style='display: none;' class='id'>".$row->id."</p>";
-	print "<img src=\"".($row->image_path == null ? '' : $row->image_path)."\" />";
+	print "<img src=\"".($row->image_path == null ? '' : 'uploads/'.$row->image_path)."\" />";
 	print "<h1 class='name'>".$row->name."</h1>";
 	print "<i class='startDate'>".$startDate.( $startDate != $endDate ? '</i> - <i class="endDate">'.$endDate : '' )."</i>&nbsp;&nbsp;|&nbsp;&nbsp;<i class='startTime'>".$startTime.( $startTime != $endTime ? '</i> - <i class="endTime">'.$endTime : '' )."</i>&nbsp;&nbsp;|&nbsp;&nbsp;<i class='address'>".$row->address."</i>
 	";
@@ -140,7 +164,10 @@ if ($loggedIn) {
 ?>
 
 	<article class="event addForm">
-		<form method="POST" action="/Church_KnightOfColumbus/index.php/Events/Add">
+		<?php echo $addError;?>
+
+		<?php echo form_open_multipart('Events/Add');?>
+			<input type="file" name="userfile" size="20" onchange="readURL(this);" />
 			<img />
 			<input type='text' class='name' name='name' placeholder='Event Name' />
 			<br />
@@ -159,6 +186,14 @@ if ($loggedIn) {
 		</form>
 		<div class='clearboth'></div>
 	</article>
+
+
+
+
+
+
+
+
 	<script>
 		var startDateTextBox = $('.addForm input[name="startDate"]');
 		var endDateTextBox = $('.addForm input[name="endDate"]');
