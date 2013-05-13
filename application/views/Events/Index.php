@@ -146,7 +146,7 @@
 
 	print "<article class=\"event\">";
 	print "<p style='display: none;' class='id'>".$row->id."</p>";
-	print "<img src=\"".($row->image_path == null ? '' : 'uploads/'.$row->image_path)."\" />";
+	print "<img src=\"".($row->image_path == null ? '" style="display: none;' : 'uploads/'.$row->image_path)."\" />";
 	print "<h1 class='name'>".$row->name."</h1>";
 	print "<i class='startDate'>".$startDate.( $startDate != $endDate ? '</i> - <i class="endDate">'.$endDate : '' )."</i>&nbsp;&nbsp;|&nbsp;&nbsp;<i class='startTime'>".$startTime.( $startTime != $endTime ? '</i> - <i class="endTime">'.$endTime : '' )."</i>&nbsp;&nbsp;|&nbsp;&nbsp;<i class='address'>".$row->address."</i>
 	";
