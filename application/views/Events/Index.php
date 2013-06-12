@@ -45,41 +45,10 @@
 				width: 200px;
 				height: 200px;
 				opacity: 0;
+				cursor: pointer;
 			}
-
-
-
-			.PopBox {
-				border: 2px solid #03426A;
-				background-color: #cacaca;
-				width: 950px;
-				box-shadow: 0px 0px 60px #888888;
-			}
-			.PopBox h1 {
-				color: white;
-				background-color: #03426A;
-				margin: 0;
-				padding: 4px 10px;
-				cursor: move;
-			}
-			.PopBox p {
-				padding: 10px;
-			}
-			.PopBox .x {
-				position: absolute;
-				right: 3px;
-				top: -2px;
-				background-color: #a60000;
-				color: white;
-				text-decoration: none;
-				padding: 2px 20px;
-			}
-			.PopBox .x:hover {
-				background-color: red;
-			}
-			.PopBox .button {
-				padding: 10px 0;
-				margin: 4px;
+			.errorBox {
+				color: red;
 			}
 		</style>
 <link rel="stylesheet" href="<?php echo base_url() ?>asset/css/jquery-ui.css" />
@@ -92,28 +61,30 @@
 
 <!------------------------------------------------------------------------------------------------------------------------------------>
 
-<!------------------ EDIT FORM  ------------------------------------------------------------------------------------------------------>
+<!------------------ POP BOXES  ------------------------------------------------------------------------------------------------------>
 
 <!------------------------------------------------------------------------------------------------------------------------------------>
 
 <div class="PopBox edit">
 	<h1>Edit</h1>
 	<div class="event editForm">
-		<form method="POST" action="/Church_KnightOfColumbus/index.php/Events/Edit">
+		<?php echo form_open_multipart('Events');?>
+			<input type="hidden" name="action" value="edit" />
 			<input type='text' style='display: none;' name='id' />
-			<img name='image' />
-			<input type='text' class='name' name='name' placeholder='Event Name' />
+			<input type="file" name="userfile" size="20" accept="image/*" onchange="previewImg(this);" />
+			<img />
+			<input type='text' class='name' name='edit[name]' placeholder='Event Name' />
 			<br />
-			<input type='text' class='italic date' name='startDate' placeholder='Start Date' /> -
-			<input type='text' class='italic date' name='endDate' placeholder='End Date' />
+			<input type='text' class='italic date' name='edit[startDate]' placeholder='Start Date' /> -
+			<input type='text' class='italic date' name='edit[endDate]' placeholder='End Date' />
 			&nbsp;&nbsp;|&nbsp;&nbsp;
-			<input type='text' class='italic time' name='startTime' placeholder='Start Time' /> -
-			<input type='text' class='italic time' name='endTime' placeholder='End Time' />
+			<input type='text' class='italic time' name='edit[startTime]' placeholder='Start Time' /> -
+			<input type='text' class='italic time' name='edit[endTime]' placeholder='End Time' />
 			&nbsp;&nbsp;|&nbsp;&nbsp;
-			<input type='text' class='italic address' name='address' placeholder='Address' />
+			<input type='text' class='italic address' name='edit[address]' placeholder='Address' />
 			<br />
 			<br />
-			<textarea style="width: 75%; height: 110px;" name='description' placeholder='Description'></textarea>
+			<textarea style="width: 75%; height: 110px;" name='edit[description]' placeholder='Description'></textarea>
 			<br /><br />
 			<input type='submit' value='Set' style="width: 100%;" />
 		</form>
@@ -171,23 +142,28 @@ if ($loggedIn) {
 <!------------------------------------------------------------------------------------------------------------------------------------>
 
 	<article class="event addForm">
-		<?php echo $addError;?>
+		<div class="errorBox">
+			<?php echo form_error(''); ?>
+			<?php echo validation_errors(); ?>
+		</div>
 
-		<?php echo form_open_multipart('Events/Add');?>
-			<input type="file" name="userfile" size="20" onchange="readURL(this);" />
+		<?php echo form_open_multipart('Events');?>
+			<input type="hidden" name="action" value="add" />
+			<input type="file" name="userfile" size="20" accept="image/*" onchange="previewImg(this);" />
 			<img />
-			<input type='text' class='name' name='name' placeholder='Event Name' />
+			<input type='text' class='name' name='add[name]' placeholder='Event Name' value="<?php echo set_value('add[name]'); ?>" />
+
 			<br />
-			<input type='text' class='italic date' name='startDate' placeholder='Start Date' /> -
-			<input type='text' class='italic date' name='endDate' placeholder='End Date' />
+			<input type='text' class='italic date' name='add[startDate]' placeholder='Start Date' value="<?php echo set_value('add[startDate]'); ?>" /> -
+			<input type='text' class='italic date' name='add[endDate]' placeholder='End Date' value="<?php echo set_value('add[endDate]'); ?>" />
 			&nbsp;&nbsp;|&nbsp;&nbsp;
-			<input type='text' class='italic time' name='startTime' placeholder='Start Time' /> -
-			<input type='text' class='italic time' name='endTime' placeholder='End Time' />
+			<input type='text' class='italic time' name='add[startTime]' placeholder='Start Time' value="<?php echo set_value('add[startTime]'); ?>" /> -
+			<input type='text' class='italic time' name='add[endTime]' placeholder='End Time' value="<?php echo set_value('add[endTime]'); ?>" />
 			&nbsp;&nbsp;|&nbsp;&nbsp;
-			<input type='text' class='italic address' name='address' placeholder='Address' />
+			<input type='text' class='italic address' name='add[address]' placeholder='Address' value="<?php echo set_value('add[address]'); ?>" />
 			<br />
 			<br />
-			<textarea style="width: 75%; height: 110px;" name='description' placeholder='Description'></textarea>
+			<textarea style="width: 75%; height: 110px;" name='add[description]' placeholder='Description'><?php echo set_value('add[description]'); ?></textarea>
 			<br /><br />
 			<input type='submit' value='Add' style="width: 100%;" />
 		</form>
@@ -199,13 +175,19 @@ if ($loggedIn) {
 
 
 
+<!------------------------------------------------------------------------------------------------------------------------------------>
+
+<!------------------ JAVASCRIPT ------------------------------------------------------------------------------------------------------>
+
+<!------------------------------------------------------------------------------------------------------------------------------------>
+
 
 
 	<script>
-		var startDateTextBox = $('.addForm input[name="startDate"]');
-		var endDateTextBox = $('.addForm input[name="endDate"]');
-		var startTimeTextBox = $('.addForm input[name="startTime"]');
-		var endTimeTextBox = $('.addForm input[name="endTime"]');
+		var startDateTextBox = $('.addForm input[name="add[startDate]"]');
+		var endDateTextBox = $('.addForm input[name="add[endDate]"]');
+		var startTimeTextBox = $('.addForm input[name="add[startTime]"]');
+		var endTimeTextBox = $('.addForm input[name="add[endTime]"]');
 		
 		startDateTextBox.datepicker({
 			dateFormat: 'MM d, yy',
@@ -287,13 +269,13 @@ if ($loggedIn) {
 			$('.PopIt[name="edit"]').click(function() {
 				var set = $(this).parent();
 				$('.PopBox.edit input[name="id"]').val(set.children('.id').text());
-				$('.PopBox.edit input[name="name"]').val(set.children('.name').text());
-				$('.PopBox.edit input[name="startDate"]').val(set.children('.startDate').text());
-				$('.PopBox.edit input[name="endDate"]').val(set.children('.endDate').text() == '' ? set.children('.startDate').text() : set.children('.endDate').text());
-				$('.PopBox.edit input[name="startTime"]').val(set.children('.startTime').text());
-				$('.PopBox.edit input[name="endTime"]').val(set.children('.endTime').text() == '' ? set.children('.startTime').text() : set.children('.endTime').text());
-				$('.PopBox.edit input[name="address"]').val(set.children('.address').text());
-				$('.PopBox.edit textarea[name="description"]').val(set.children('.description').text());
+				$('.PopBox.edit input[name="edit[name]"]').val(set.children('.name').text());
+				$('.PopBox.edit input[name="edit[startDate]"]').val(set.children('.startDate').text());
+				$('.PopBox.edit input[name="edit[endDate]"]').val(set.children('.endDate').text() == '' ? set.children('.startDate').text() : set.children('.endDate').text());
+				$('.PopBox.edit input[name="edit[startTime]"]').val(set.children('.startTime').text());
+				$('.PopBox.edit input[name="edit[endTime]"]').val(set.children('.endTime').text() == '' ? set.children('.startTime').text() : set.children('.endTime').text());
+				$('.PopBox.edit input[name="edit[address]"]').val(set.children('.address').text());
+				$('.PopBox.edit textarea[name="edit[description]"]').val(set.children('.description').text());
 				$('.PopBox.edit img').attr('src', set.children('img').attr('src'));
 			});
 			$('.PopIt[name="delete"]').click(function() {
@@ -301,7 +283,7 @@ if ($loggedIn) {
 				$('.PopBox.delete b[name="eventName"]').html($(this).parent().children('.name').text());
 			});
 		});
-		function readURL(input) {
+		function previewImg(input) {
 	        if (input.files && input.files[0]) {
 	            var reader = new FileReader();
 

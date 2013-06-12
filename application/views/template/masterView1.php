@@ -11,7 +11,7 @@
 		<style>
 			.loginView {
 				float: right;
-				margin-top: -30px;
+				margin-top: -29px;
 				color: white;
 				background-color: #03426A;
 				padding: 5px 10px;

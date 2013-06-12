@@ -4,7 +4,7 @@
 </head>
 <body>
 
-<?php echo $error;?>
+<?php echo $addError;?>
 
 <?php echo form_open_multipart('upload/do_upload');?>
 

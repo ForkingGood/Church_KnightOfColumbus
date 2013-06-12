@@ -4,7 +4,7 @@
    <?php //echo form_open('verifylogin'); ?>
    <form method="POST">
      <label for="username">Username:</label>
-     <input type="text" size="20" id="username" name="username"/>
+     <input type="text" size="20" id="username" name="username" autofocus="autofocus" />
      ( bob )
      <br/>
      <label for="password">Password:</label>
